@@ -1,5 +1,5 @@
 inf=9999999999
-graph1=[ [0,10,3,inf,inf],[inf,0,1,2,inf],[inf,4,0,8,inf],[inf,inf,inf,0,7],[inf,inf,inf,9,0]]
+# graph1=[ [0,10,3,inf,inf],[inf,0,1,2,inf],[inf,4,0,8,inf],[inf,inf,inf,0,7],[inf,inf,inf,9,0]]
 def criaVertice ():
 	graph=[]
 	nVertice = int(input("Digite o número de vértices: "))
@@ -39,7 +39,6 @@ def FloydWarshal(graph):
 	print(pred)
 	print("Matriz de caminho mínimo")
 	print(graph)
-	return graph	
-
+	return graph
 
 FloydWarshal(criaVertice())			

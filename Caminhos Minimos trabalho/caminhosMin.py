@@ -10,7 +10,7 @@ class Vertex:
 # c = Vertex('c','NULL','NULL')
 # d = Vertex('d','NULL','NULL')
 # e = Vertex('e','NULL','NULL')
-# graph2 = {a:{b:10,c:3},b:{d:2,c:1},c:{b:4,d:8},d:{e:7},e:{d:9}}
+# graph2 = {a:{b:10,c:3},b:{c:1,d:2},c:{b:4,d:8},d:{e:7},e:{d:9}}
 graph={}
 
 def criaVertice ():
@@ -93,6 +93,13 @@ def caminhoMinimo(v):
 	if(v.pred!=None):
 		caminhoMinimo(v.pred)
 
+def verificaCaminho(s,v):
+	while v.pred!=None:
+		if v.pred==s:
+			return True
+		v=v.pred	
+	return False
+
 def escolheAlgoritimo(graph):
 	print("1 - dijkstra")
 	print("2 - BellmanFord")
@@ -107,7 +114,10 @@ def escolheAlgoritimo(graph):
 		for k in graph:
 			if v == k.name:
 				v = k
-		caminhoMinimo(v)
+		if verificaCaminho(s,v):
+			caminhoMinimo(v)
+		else:
+			print("Não há caminho para o vértice")
 	if n == 2:
 		s = input("Digite o vértice inicial: ")
 		for k in graph:
@@ -117,8 +127,11 @@ def escolheAlgoritimo(graph):
 		v = input("Digite o vértice final: ")
 		for k in graph:
 			if v == k.name:
-				v = k
-		caminhoMinimo(v)
+				v = k		
+		if verificaCaminho(s,v):
+			caminhoMinimo(v)
+		else:
+			print("Não há caminho para o vértice")
 
 
 escolheAlgoritimo(criaVertice())
